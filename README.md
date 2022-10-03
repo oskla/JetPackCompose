@@ -1,4 +1,4 @@
 # JetPackCompose
 Trying out JetPack Compose
 
-Trying out JetPack compose - Made a card grid.
+Trying out JetPack compose - Made a scrollable card grid.
