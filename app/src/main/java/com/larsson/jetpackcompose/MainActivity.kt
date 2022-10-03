@@ -26,10 +26,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            val painter = painterResource(id = R.drawable.skeletons)
-            val painter2 = painterResource(id = R.drawable.hands)
-            val description = "Two skeletons in love"
-            val title = "Two skeletons in love"
+            // val painter = painterResource(id = R.drawable.skeletons)
+            // val painter2 = painterResource(id = R.drawable.hands)
+            // val description = "Two skeletons in love"
+            // val title = "Two skeletons in love"
 
             Column(modifier = Modifier
                 // .border(BorderStroke(1.dp, Color.Red))
@@ -39,10 +39,35 @@ class MainActivity : ComponentActivity() {
 
             ) {
 
-                ImageRow(painter = painter, description = description, title = title)
-                ImageRow(painter = painter2, description = description , title = title)
-                ImageRow(painter = painter, description = description , title = title )
-                ImageRow(painter = painter2, description = description , title = title )
+                ImageRow(
+                    ContentData().imgSkeletons,
+                    ContentData().imgHands,
+                    description1 = "Skeletons in love",
+                    title1 = "Skeletons in love",
+                    description2 = "Hands",
+                    title2 = "Hands")
+                ImageRow(
+                    ContentData().imgDrinks,
+                    ContentData().imgTv,
+                    description1 = "Drinks",
+                    title1 = "Drinks",
+                    description2 = "Tv",
+                    title2 = "Tv")
+
+                ImageRow(
+                    ContentData().imgStars,
+                    ContentData().imgFlowers,
+                    description1 = "Stars",
+                    title1 = "Stars",
+                    description2 = "Flowers",
+                    title2 = "Flowers")
+                ImageRow(
+                    ContentData().imgCrowd,
+                    ContentData().imgMountain,
+                    description1 = "Crowd",
+                    title1 = "Crowd",
+                    description2 = "Mountain",
+                    title2 = "Mountain")
             }
 
         }
@@ -50,25 +75,29 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun ImageRow (
-        painter: Painter,
-        description: String,
-        title: String,
-        modifier: Modifier = Modifier
+        img1: Int,
+        img2: Int,
+        description1: String,
+        description2: String,
+        title1: String,
+        title2: String
     ) {
-        Row(modifier = Modifier
-            // .border(BorderStroke(2.dp, Color.Blue)),
-        ) {
+      //  val painter = painterResource(id = Data().image)
+       // val painter2 = painterResource(id = R.drawable.hands)
+
+
+        Row() {
             Box(modifier = Modifier.weight(1f)) {
                 ImageCard(
-                    painter = painter,
-                    contentDescription = description,
-                    title = title
+                    painter = painterResource(img1),
+                    contentDescription = description1,
+                    title = title1
                 )}
             Box(modifier = Modifier.weight(1f)) {
                 ImageCard(
-                    painter = painter,
-                    contentDescription = description,
-                    title = title
+                    painter = painterResource(img2),
+                    contentDescription = description2,
+                    title = title2
                 )}
 
         }
@@ -76,7 +105,7 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun ImageCard(
-        painter: Painter,
+        painter: Painter = painterResource(id = R.drawable.skeletons),
         contentDescription: String,
         title: String,
         modifier: Modifier = Modifier
@@ -85,8 +114,7 @@ class MainActivity : ComponentActivity() {
         Card(
             modifier = modifier
                 //.width(200.dp) -
-                .padding(20.dp)
-                .border(BorderStroke(1.dp, Color.Magenta)),
+                .padding(20.dp),
             shape = RoundedCornerShape(15.dp),
             elevation = CardDefaults.cardElevation(10.dp)
         ) {
