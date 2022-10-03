@@ -28,44 +28,56 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState()),
-                horizontalAlignment = Alignment.CenterHorizontally
+           Content()
 
-            ) {
+        }
+    }
+    @Composable
+    fun Content() {
+        Column(modifier = Modifier
+            .padding(0.dp, 20.dp)
+            .fillMaxWidth()
+            .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
 
-                ImageRow(
-                    ContentData().imgSkeletons,
-                    ContentData().imgHands,
-                    description1 = "Skeletons in love",
-                    title1 = "Skeletons in love",
-                    description2 = "Hands",
-                    title2 = "Hands")
-                ImageRow(
-                    ContentData().imgDrinks,
-                    ContentData().imgTv,
-                    description1 = "Drinks",
-                    title1 = "Drinks",
-                    description2 = "Tv",
-                    title2 = "Tv")
+        ) {
 
-                ImageRow(
-                    ContentData().imgStars,
-                    ContentData().imgFlowers,
-                    description1 = "Stars",
-                    title1 = "Stars",
-                    description2 = "Flowers",
-                    title2 = "Flowers")
-                ImageRow(
-                    ContentData().imgCrowd,
-                    ContentData().imgMountain,
-                    description1 = "Crowd",
-                    title1 = "Crowd",
-                    description2 = "Mountain",
-                    title2 = "Mountain")
-            }
+            ImageRow(
+                ContentData().imgSkeletons,
+                ContentData().imgHands,
+                description1 = "Skeletons in love",
+                title1 = "Skeletons in love",
+                description2 = "Hands",
+                title2 = "Hands")
+            ImageRow(
+                ContentData().imgDrinks,
+                ContentData().imgTv,
+                description1 = "Drinks",
+                title1 = "Drinks",
+                description2 = "Tv",
+                title2 = "Tv")
 
+            ImageRow(
+                ContentData().imgStars,
+                ContentData().imgFlowers,
+                description1 = "Stars",
+                title1 = "Stars",
+                description2 = "Flowers",
+                title2 = "Flowers")
+            ImageRow(
+                ContentData().imgCrowd,
+                ContentData().imgMountain,
+                description1 = "Crowd",
+                title1 = "Crowd",
+                description2 = "Mountain",
+                title2 = "Mountain")
+            ImageRow(
+                ContentData().imgCrowd,
+                ContentData().imgMountain,
+                description1 = "Crowd",
+                title1 = "Crowd",
+                description2 = "Mountain",
+                title2 = "Mountain")
         }
     }
 
@@ -78,13 +90,17 @@ class MainActivity : ComponentActivity() {
         title1: String,
         title2: String
     ) {
-        Row() {
+
+        Row(
+            modifier = Modifier.padding(20.dp, 0.dp, 20.dp, 20.dp)
+        ) {
             Box(modifier = Modifier.weight(1f)) {
                 ImageCard(
                     painter = painterResource(img1),
                     contentDescription = description1,
                     title = title1
                 )}
+            Spacer(modifier = Modifier.padding(10.dp))
             Box(modifier = Modifier.weight(1f)) {
                 ImageCard(
                     painter = painterResource(img2),
@@ -103,10 +119,7 @@ class MainActivity : ComponentActivity() {
     ) {
 
         Card(
-            modifier = modifier
-                //.width(200.dp) -
-
-                .padding(20.dp),
+            modifier = modifier,
             shape = RoundedCornerShape(15.dp),
             elevation = CardDefaults.cardElevation(10.dp)
         ) {
@@ -141,13 +154,6 @@ class MainActivity : ComponentActivity() {
     @Preview(showBackground = true)
     @Composable
     fun ComposablePreview() {
-        ImageRow(ContentData().imgSkeletons,
-            ContentData().imgHands,
-            description1 = "Skeletons in love",
-            title1 = "Skeletons in love",
-            description2 = "Hands",
-            title2 = "Hands")
-    }
+        Content()
 
-
-}
+}}
